@@ -8,110 +8,113 @@
 <meta property="og:title" content="Anusha C.P & Abhijith S - Wedding Invitation">
 <meta property="og:description" content="Friday, April 23, 2027 · 12:00 PM · Bride's Home, Perumanna, Kozhikode">
 <meta property="og:image" content="photo4.jpg">
-<meta name="theme-color" content="#0d1220">
+<meta name="theme-color" content="#8b1a4a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Dancing+Script:wght@500;600;700&family=Lora:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@600;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0d1220; --navy-2:#151b2e; --gold:#8e6929; --gold-2:#866327; --gold-lt:#d8b56a; --gold-glow:#f5b335;
+    --maroon:#8b1a4a; --wine:#8b1a4a; --ml:'Noto Serif Malayalam',serif;
+    --wc:radial-gradient(ellipse 55% 35% at 12% 18%,rgba(240,150,178,.32),transparent 70%),radial-gradient(ellipse 50% 32% at 88% 55%,rgba(240,150,178,.28),transparent 70%),radial-gradient(ellipse 60% 40% at 30% 85%,rgba(255,255,255,.65),transparent 70%),radial-gradient(ellipse 45% 30% at 75% 10%,rgba(255,255,255,.6),transparent 70%),#fae0e7; --gold:#8e6929; --gold-2:#866327; --gold-lt:#d8b56a; --gold-glow:#f5b335;
     --cream:#f1ede4; --cream-2:#f8f4ec; --ink:#151a28; --muted:#515667; --wine:#5c0701;
     --script:'Dancing Script',cursive; --play:'Playfair Display',serif; --lora:'Lora',serif; --corm:'Cormorant Garamond',serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:var(--lora);color:var(--ink);background:var(--cream-2);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--lora);color:var(--ink);background:#fbe6ec;overflow-x:hidden;-webkit-font-smoothing:antialiased}
   body.locked{overflow:hidden;height:100vh}
   img{display:block;max-width:100%}
 
-  /* ================= OPENER (doors + bow) ================= */
-  #opener{position:fixed;inset:0;z-index:100;cursor:pointer;overflow:hidden}
-  .half{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;transition:transform 1.8s cubic-bezier(.7,0,.25,1);
-    background:
-      repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 7px),
-      radial-gradient(ellipse at 50% 40%,#1a2238 0%,#0d1220 65%,#080b15 100%)}
-  .half.l{left:0;border-right:1px solid #b88d3e}
-  .half.r{right:0;border-left:1px solid #b88d3e}
-  .half.l::after,.half.r::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(#6d5020,#e2bf73,#6d5020)}
-  .half.l::after{right:10px}.half.r::after{left:10px}
-  .half .vine{position:absolute;top:0;height:100%;width:120px}
-  .half.l .vine{left:-8px}
-  .half.r .vine{right:-8px;transform:scaleX(-1)}
+  /* ================= LOTUS DECOR ================= */
+  .lotus{position:absolute;pointer-events:none;z-index:1;user-select:none}
+  .lotus.tl{top:0;left:0;width:min(44vw,240px);-webkit-mask-image:radial-gradient(ellipse 100% 100% at 0 0,#000 62%,transparent 86%);mask-image:radial-gradient(ellipse 100% 100% at 0 0,#000 62%,transparent 86%)}
+  .lotus.br{bottom:0;right:0;width:min(40vw,210px);-webkit-mask-image:radial-gradient(ellipse 100% 100% at 100% 100%,#000 62%,transparent 86%);mask-image:radial-gradient(ellipse 100% 100% at 100% 100%,#000 62%,transparent 86%)}
+  .lotus.bl{bottom:0;left:0;width:min(24vw,130px);-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(0deg,#000 75%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(0deg,#000 75%,transparent);mask-composite:intersect}
+
+  /* ================= OPENER (pink doors) ================= */
+  #opener{position:fixed;inset:0;z-index:100;cursor:pointer;overflow:hidden;background:#f6d3dc}
+  .half{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;transition:transform 1.8s cubic-bezier(.7,0,.25,1);background:var(--wc)}
+  .half.l{left:0;border-right:1px solid #c39a4a}
+  .half.r{right:0;border-left:1px solid #c39a4a}
+  .half.l::after,.half.r::after{content:"";position:absolute;top:0;bottom:0;width:6px;background:linear-gradient(90deg,#c39a4a 0 1.5px,transparent 1.5px 4.5px,#c39a4a 4.5px 6px)}
+  .half.l::after{right:8px}.half.r::after{left:8px}
+  .half .lotus.tl{width:min(62vw,260px)}
+  .half .lotus.br{width:min(58vw,240px)}
   #opener.open .half.l{transform:translateX(-101%)}
   #opener.open .half.r{transform:translateX(101%)}
-  .bow{position:absolute;left:50%;top:50%;width:min(110vw,560px);transform:translate(-50%,-44%);transition:opacity .9s ease,transform 1.2s ease;pointer-events:none}
-  #opener.open .bow{opacity:0;transform:translate(-50%,-44%) scale(1.15)}
-  .tap{position:absolute;left:50%;top:50%;transform:translate(-50%,-185%);z-index:3;text-align:center;pointer-events:none;transition:opacity .5s}
-  .tap span{display:block;font-family:var(--play);color:#efe6d2;font-size:21px;padding:8px 20px;border-top:1px solid rgba(216,181,106,.7);border-bottom:1px solid rgba(216,181,106,.7);background:rgba(13,18,32,.55);backdrop-filter:blur(2px);animation:breathe 2.4s ease-in-out infinite}
-  .tap i{display:block;color:var(--gold-lt);font-style:normal;font-size:13px;line-height:1}
-  #opener.open .tap{opacity:0}
+  .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;pointer-events:none;transition:opacity .8s ease,transform 1.2s ease;width:260px}
+  #opener.open .seal{opacity:0;transform:translate(-50%,-50%) scale(1.12)}
+  .seal-ring{width:138px;height:138px;border-radius:50%;margin:0 auto;display:grid;place-items:center;overflow:hidden;
+    background:radial-gradient(circle,#fbe7eb 0,#f7dbe1 70%);
+    box-shadow:0 0 0 2px #c39a4a,0 0 0 7px rgba(255,255,255,.7),0 0 0 8px #c39a4a,0 16px 34px rgba(139,26,74,.25);animation:pulse 2.6s ease-in-out infinite}
+  .seal-ring img{width:78px;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse at center,#000 58%,transparent 72%);mask-image:radial-gradient(ellipse at center,#000 58%,transparent 72%)}
+  @keyframes pulse{50%{transform:scale(1.04)}}
+  .tap{margin-top:24px}
+  .tap span{display:inline-block;font-family:var(--play);color:var(--wine);font-size:20px;padding:7px 22px;border-top:1px solid #c39a4a;border-bottom:1px solid #c39a4a;background:rgba(255,255,255,.55);animation:breathe 2.4s ease-in-out infinite}
+  .tap i{display:block;color:#c39a4a;font-style:normal;font-size:12px;letter-spacing:.3em;line-height:1.8}
   #opener.gone{display:none}
-  @keyframes breathe{50%{opacity:.7}}
+  @keyframes breathe{50%{opacity:.65}}
 
   /* ================= MUSIC BUTTON ================= */
-  #musicBtn{position:fixed;top:14px;right:14px;z-index:120;width:42px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
-    background:rgba(142,105,41,.92);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  #musicBtn{position:fixed;top:14px;right:14px;z-index:120;width:42px;height:42px;border-radius:10px;border:1px solid #e6c37c;
+    background:rgba(139,26,74,.92);color:#fff2f6;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(139,26,74,.3)}
   #musicBtn svg{width:20px;height:20px}
 
-  /* ================= HERO (night sky) ================= */
-  #hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;color:#efe6d2;text-align:center;
-    background:linear-gradient(180deg,#070b1a 0%,#0e1530 38%,#1b2343 62%,#3a3550 74%,#151a26 82%,#0b0f17 100%)}
-  #stars{position:absolute;inset:0;z-index:0}
-  .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--t) ease-in-out infinite;opacity:.8}
-  @keyframes twinkle{50%{opacity:.15}}
-  .moon{position:absolute;top:26%;right:18%;width:22px;height:22px;border-radius:50%;box-shadow:-5px 3px 0 0 #fff3cf;filter:drop-shadow(0 0 6px rgba(255,240,200,.8));z-index:1}
-  .scene{position:absolute;left:0;right:0;width:100%;pointer-events:none;z-index:1}
-  .scene.top{top:0;height:min(64vw,300px)}
-  .scene.bottom{bottom:0;height:46%}
-  .glow{animation:flicker 3s ease-in-out infinite}
-  @keyframes flicker{0%,100%{opacity:1}45%{opacity:.82}55%{opacity:.95}}
-  .hero-inner{position:relative;z-index:3;max-width:620px;margin:0 auto;padding:96px 24px 110px;opacity:0;transform:translateY(20px);transition:opacity 1.6s ease .4s,transform 1.6s ease .4s}
+  /* ================= HERO (card style) ================= */
+  #hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;text-align:center;background:var(--wc)}
+  .hero-photo{position:absolute;left:0;top:12%;bottom:18%;width:78%;z-index:0;background:url(photo4.jpg) 30% 20%/cover no-repeat;opacity:.2;
+    -webkit-mask-image:linear-gradient(90deg,#000 35%,transparent 92%),linear-gradient(180deg,transparent,#000 18%,#000 75%,transparent);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,#000 35%,transparent 92%),linear-gradient(180deg,transparent,#000 18%,#000 75%,transparent);mask-composite:intersect}
+  .hero-inner{position:relative;z-index:3;max-width:620px;margin:0 auto;padding:56px 24px 110px;opacity:0;transform:translateY(20px);transition:opacity 1.6s ease .4s,transform 1.6s ease .4s}
   body.opened .hero-inner{opacity:1;transform:none}
-  .hero-heart{width:34px;margin:0 auto 18px;color:#f3d48b}
-  .hero-text{font-family:var(--corm);font-size:17px;line-height:1.55;color:#ece2a8}
-  .verse{font-family:var(--corm);font-size:16px;color:#ece2a8;margin:28px 0 0;line-height:1.4}
-  .div-line{display:flex;align-items:center;justify-content:center;gap:12px;margin:22px auto}
-  .div-line::before,.div-line::after{content:"";width:80px;height:1px;background:currentColor;opacity:.45}
-  .div-line svg{width:10px;height:10px}
-  .hero .div-line{color:#e2c178}
-  .name{font-family:var(--script);font-weight:600;font-size:clamp(40px,11vw,58px);color:var(--gold-glow);line-height:1.15;text-shadow:0 2px 14px rgba(245,179,53,.3)}
-  .parent{font-family:var(--play);font-style:italic;font-size:18px;color:#d19d01;line-height:1.35;margin-top:6px}
-  .amp{font-family:var(--script);font-size:46px;color:#ffab01;margin:10px 0 2px}
-  .scroll{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;font-family:var(--lora);font-weight:600;letter-spacing:.1em;font-size:14px;color:#e9cf94;text-align:center}
+  .ganesha{width:74px;margin:0 auto;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse at center,#000 60%,transparent 74%);mask-image:radial-gradient(ellipse at center,#000 60%,transparent 74%)}
+  .hero-text{font-family:var(--corm);font-size:18px;line-height:1.55;color:#5e1631;font-weight:500}
+  .div-line{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px auto}
+  .div-line::before,.div-line::after{content:"";width:90px;height:1.5px;background:currentColor;opacity:.75}
+  .div-line svg{width:30px;height:10px}
+  .hero .div-line{color:#c39a4a}
+  .name{font-family:var(--script);font-weight:700;font-size:clamp(42px,11vw,60px);color:var(--wine);line-height:1.1}
+  .name-ml{font-family:var(--ml);font-weight:800;font-size:20px;color:#9b2457;margin-top:2px}
+  .parent{font-family:var(--play);font-style:italic;font-size:17px;color:#6e2a45;line-height:1.4;margin-top:8px}
+  .amp{font-family:var(--script);font-size:44px;color:#c39a4a;margin:12px 0 4px}
+  .scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;font-family:var(--lora);font-weight:600;letter-spacing:.1em;font-size:14px;color:var(--wine);text-align:center}
   .scroll svg{display:block;margin:8px auto 0;width:20px;animation:bob 1.6s ease-in-out infinite}
   @keyframes bob{50%{transform:translateY(5px)}}
+  .kasavu{height:1.5px;background:linear-gradient(90deg,transparent,#c39a4a,transparent)}
+  .glow{animation:none}
 
   /* ================= COMMON ================= */
   section.s{padding:64px 24px;text-align:center;position:relative;overflow:hidden}
   .w{max-width:640px;margin:0 auto}
-  .bg-a{background:var(--cream)}
-  .bg-b{background:var(--cream-2)}
-  h2.t{font-family:var(--script);font-weight:600;font-size:48px;color:var(--gold);line-height:1.15}
-  .sec .div-line{color:#a88a4f}
-  .sec-icon{width:28px;height:28px;margin:0 auto 10px;color:var(--gold)}
+  .bg-a{background:var(--wc)}
+  .bg-b{background:radial-gradient(ellipse 60% 40% at 85% 20%,rgba(240,150,178,.22),transparent 70%),radial-gradient(ellipse 60% 40% at 10% 80%,rgba(240,150,178,.2),transparent 70%),#fdeef2}
+  h2.t{font-family:var(--script);font-weight:600;font-size:48px;color:var(--maroon);line-height:1.15}
+  .sec .div-line{color:#c39a4a}
+  .sec-icon{width:28px;height:28px;margin:0 auto 10px;color:var(--maroon)}
   .rv{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
   .rv.in{opacity:1;transform:none}
-  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;background:var(--gold);color:#faf8f4;font-family:var(--lora);font-size:14px;
-    padding:11px 20px;border-radius:6px;text-decoration:none;box-shadow:0 8px 20px rgba(142,105,41,.25);transition:transform .2s,background .2s}
-  .btn:hover{transform:translateY(-2px);background:#7a5a22}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;background:linear-gradient(135deg,#a3285a,#741540);color:#fff3f7;border:1px solid #e6c37c;font-family:var(--lora);font-size:14px;
+    padding:11px 20px;border-radius:6px;text-decoration:none;box-shadow:0 8px 20px rgba(139,26,74,.25);transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
   .btn svg{width:16px;height:16px}
 
   /* ================= STORY ================= */
-  #story{background:linear-gradient(180deg,#e6dfcf 0%,#efe9dc 45%,#f8f4ec 100%);padding:80px 30px}
-  #story p{font-family:var(--script);font-size:21px;color:var(--wine);line-height:1.75;margin:0 auto 28px;max-width:520px}
+  #story{background:radial-gradient(ellipse 60% 40% at 85% 20%,rgba(240,150,178,.22),transparent 70%),#fdeef2;padding:80px 30px}
+  #story p{font-family:var(--script);font-size:21px;color:#7a1640;line-height:1.75;margin:0 auto 28px;max-width:520px}
   #story p:last-of-type{margin-bottom:0}
 
   /* ================= SCRATCH ================= */
   .heart-wrap{position:relative;width:200px;height:184px;margin:22px auto 26px}
   .heart-clip{position:absolute;inset:0;clip-path:path('M100 182 C 40 140 0 106 0 58 C 0 24 26 0 58 0 C 78 0 92 10 100 26 C 108 10 122 0 142 0 C 174 0 200 24 200 58 C 200 106 160 140 100 182 Z')}
   .heart-under{background:#fbf8f1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:22px;gap:2px}
-  .heart-under .a{font-family:var(--corm);font-size:20px;color:var(--gold-2)}
+  .heart-under .a{font-family:var(--corm);font-size:20px;color:var(--wine);font-weight:600}
   .heart-under .b{font-family:var(--play);font-size:16px;color:var(--ink);margin-top:4px}
-  .heart-under .c{font-family:var(--corm);font-size:14px;color:var(--gold-2)}
+  .heart-under .c{font-family:var(--corm);font-size:14px;color:var(--wine)}
   .heart-under .d{font-family:var(--lora);font-size:10px;color:var(--muted)}
   #scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer;transition:opacity .8s}
   #scratch.done{opacity:0;pointer-events:none}
-  .heart-wrap{filter:drop-shadow(0 8px 14px rgba(142,105,41,.3))}
+  .heart-wrap{filter:drop-shadow(0 8px 14px rgba(139,26,74,.28))}
 
   /* ================= PHOTO ================= */
   .photo{border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(21,26,40,.22);margin-top:6px}
@@ -120,19 +123,19 @@
   .photo img.on{opacity:1;transform:scale(1)}
   .dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
   .dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;background:#d6c9a8;cursor:pointer;transition:all .3s}
-  .dots button.on{background:var(--gold);width:22px;border-radius:5px}
+  .dots button.on{background:var(--maroon);width:22px;border-radius:5px}
 
   /* ================= COUNTDOWN ================= */
   .cd{display:flex;justify-content:center;gap:10px;margin-top:8px}
   .cd .u{display:flex;flex-direction:column;align-items:center;gap:8px}
-  .cd .box{width:58px;height:50px;display:grid;place-items:center;border-radius:8px;background:#e7e0d1;border:1px solid #d9cfb9;font-family:var(--play);font-size:22px;color:var(--ink);font-weight:600}
+  .cd .box{width:58px;height:50px;display:grid;place-items:center;border-radius:8px;background:#fff;border:1px solid #eeb3c6;color:var(--wine);font-family:var(--play);font-size:22px;color:var(--ink);font-weight:600}
   .cd .lbl{font-family:var(--lora);font-size:11px;letter-spacing:.05em;color:var(--muted)}
   @media(min-width:520px){.cd{gap:22px}.cd .box{width:96px;height:84px;font-size:40px}.cd .lbl{font-size:14px}}
 
   /* ================= VENUE ================= */
   .vname{font-family:var(--play);font-size:20px;color:var(--ink);font-weight:500}
   .vaddr{font-family:var(--lora);font-size:16px;color:var(--muted);line-height:1.55;margin-top:8px}
-  .vwhen{font-family:var(--corm);font-size:18px;color:var(--gold-2);margin-top:8px;font-style:italic}
+  .vwhen{font-family:var(--corm);font-size:18px;color:var(--wine);margin-top:8px;font-style:italic}
   .map{margin:22px 0 26px;height:270px;border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(21,26,40,.14)}
   .map iframe{width:100%;height:100%;border:0}
 
@@ -141,17 +144,17 @@
   form label{display:flex;align-items:center;gap:6px;font-family:var(--lora);font-size:14px;color:var(--ink);margin-bottom:7px}
   form label b{color:#dc2828;font-weight:400}
   form label svg{width:14px;height:14px}
-  form input,form select,form textarea{width:100%;padding:11px 12px;border-radius:6px;border:1px solid #d6cfc0;background:#e9e5dc;font-family:var(--lora);font-size:14px;color:var(--ink)}
+  form input,form select,form textarea{width:100%;padding:11px 12px;border-radius:6px;border:1px solid #efc1cf;background:#fff8fa;font-family:var(--lora);font-size:14px;color:var(--ink)}
   form textarea{min-height:72px;resize:vertical}
-  form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+  form input:focus,form select:focus,form textarea:focus{outline:2px solid #d4708f;outline-offset:1px}
   form .btn{width:100%;justify-content:center;padding:12px}
-  .thanks{display:none;font-family:var(--corm);font-size:18px;color:var(--gold-2);text-align:center}
+  .thanks{display:none;font-family:var(--corm);font-size:18px;color:var(--wine);text-align:center}
 
   /* ================= CLOSING ================= */
-  .wave{width:100%;height:30px;color:#cbb98f}
+  .wave{width:100%;height:30px;color:#c39a4a}
   .closing h2.t{font-size:clamp(38px,10vw,52px);margin:40px 0}
-  footer{background:var(--cream-2);border-top:1px solid #e3dccd;text-align:center;padding:40px 20px 50px}
-  footer .fn{font-family:var(--script);font-size:20px;color:var(--gold);font-weight:600}
+  footer{background:#fbe3ea;border-top:4px double #c39a4a;text-align:center;padding:40px 20px 50px}
+  footer .fn{font-family:var(--script);font-size:20px;color:var(--maroon);font-weight:600}
   footer small{display:block;margin-top:10px;font-family:var(--lora);font-size:12px;color:var(--muted)}
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.hero-inner{opacity:1;transform:none}}
@@ -161,61 +164,19 @@
 
 <!-- ============ TAP TO OPEN ============ -->
 <div id="opener" role="button" tabindex="0" aria-label="Tap to open the invitation">
-  <div class="half l"><svg class="vine" viewBox="0 0 120 800" preserveAspectRatio="xMidYMid slice"><use href="#vine"/></svg></div>
-  <div class="half r"><svg class="vine" viewBox="0 0 120 800" preserveAspectRatio="xMidYMid slice"><use href="#vine"/></svg></div>
-
-  <svg class="bow" viewBox="0 0 560 520" aria-hidden="true">
-    <defs>
-      <linearGradient id="silk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3350" stop-opacity=".75"/><stop offset=".5" stop-color="#121a30" stop-opacity=".55"/><stop offset="1" stop-color="#2a3350" stop-opacity=".75"/></linearGradient>
-      <linearGradient id="gstroke" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c7630"/><stop offset=".5" stop-color="#f0d38c"/><stop offset="1" stop-color="#9c7630"/></linearGradient>
-    </defs>
-    <!-- ribbon band -->
-    <path d="M0 150 Q 140 140 230 162 L 230 202 Q 140 182 0 196Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="1.6"/>
-    <path d="M560 150 Q 420 140 330 162 L 330 202 Q 420 182 560 196Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="1.6"/>
-    <!-- loops -->
-    <path d="M262 180 C 200 90 90 70 80 140 C 72 200 160 230 262 196Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="2"/>
-    <path d="M298 180 C 360 90 470 70 480 140 C 488 200 400 230 298 196Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="2"/>
-    <path d="M250 182 C 200 130 130 120 118 150" fill="none" stroke="#e8cb85" stroke-opacity=".35" stroke-width="1"/>
-    <path d="M310 182 C 360 130 430 120 442 150" fill="none" stroke="#e8cb85" stroke-opacity=".35" stroke-width="1"/>
-    <!-- tails -->
-    <path d="M266 200 C 240 290 190 380 120 470 L 168 482 L 190 440 C 236 360 268 290 282 206Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="1.8"/>
-    <path d="M294 200 C 320 290 370 380 440 470 L 392 482 L 370 440 C 324 360 292 290 278 206Z" fill="url(#silk)" stroke="url(#gstroke)" stroke-width="1.8"/>
-    <!-- knot -->
-    <rect x="254" y="160" width="52" height="48" rx="18" fill="#141b2f" stroke="url(#gstroke)" stroke-width="2"/>
-    <path d="M266 168 Q 280 184 294 168 M266 200 Q 280 186 294 200" stroke="#e8cb85" stroke-opacity=".4" fill="none"/>
-  </svg>
-
-  <div class="tap"><i>❦</i><span>Tap to Open</span><i>❦</i></div>
+  <div class="half l"><img class="lotus tl" src="art/lotus-tl.png" alt=""></div>
+  <div class="half r"><img class="lotus br" src="art/lotus-br.png" alt=""></div>
+  <div class="seal">
+    <div class="seal-ring"><img src="art/ganesha.png" alt=""></div>
+    <div class="tap"><i>• • •</i><span>Tap to Open</span><i>• • •</i></div>
+  </div>
 </div>
 
 <!-- shared symbols -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="leafG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d58e"/><stop offset=".55" stop-color="#c49a45"/><stop offset="1" stop-color="#7c5a1e"/></linearGradient>
-    <symbol id="leaf" viewBox="0 0 40 16"><path d="M0 8 C 10 -2 30 -2 40 8 C 30 18 10 18 0 8Z" fill="url(#leafG)"/><path d="M2 8 H 36" stroke="#7c5a1e" stroke-width=".8"/></symbol>
-    <symbol id="leafDark" viewBox="0 0 40 16"><path d="M0 8 C 10 -2 30 -2 40 8 C 30 18 10 18 0 8Z" fill="#1d2438"/><path d="M2 8 H 36" stroke="#39425e" stroke-width=".8"/></symbol>
-    <symbol id="vine" viewBox="0 0 120 800">
-      <path d="M40 0 C 70 100 20 200 50 300 C 80 400 20 500 50 600 C 75 700 30 760 45 800" fill="none" stroke="url(#leafG)" stroke-width="2.4"/>
-      <g id="vrow">
-        <use href="#leaf" x="46" y="20" width="44" height="18" transform="rotate(-25 46 29)"/>
-        <use href="#leafDark" x="0" y="50" width="40" height="16" transform="rotate(200 20 58)"/>
-        <use href="#leaf" x="-4" y="80" width="44" height="18" transform="rotate(205 18 89)"/>
-        <use href="#leaf" x="50" y="110" width="46" height="18" transform="rotate(-20 50 119)"/>
-        <use href="#leafDark" x="52" y="140" width="40" height="16" transform="rotate(-10 52 148)"/>
-        <use href="#leaf" x="-2" y="170" width="44" height="18" transform="rotate(200 20 179)"/>
-        <circle cx="86" cy="70" r="3.5" fill="url(#leafG)"/><circle cx="12" cy="130" r="3" fill="url(#leafG)"/><circle cx="92" cy="180" r="2.5" fill="url(#leafG)"/>
-      </g>
-      <use href="#vrow" y="200"/><use href="#vrow" y="400"/><use href="#vrow" y="600"/>
-    </symbol>
-    <symbol id="lantern" viewBox="0 0 40 80">
-      <path d="M20 0 V 12" stroke="#c7a256" stroke-width="1.2"/>
-      <path d="M12 12 H 28 L 32 20 H 8Z" fill="#b8913f"/>
-      <path d="M9 20 H 31 L 28 54 H 12Z" fill="#ffd77a" fill-opacity=".85" class="glow"/>
-      <path d="M9 20 H 31 L 28 54 H 12Z M20 20 V 54 M14 20 L 15 54 M26 20 L 25 54" fill="none" stroke="#a57f32" stroke-width="1.4"/>
-      <path d="M11 54 H 29 L 25 62 H 15Z" fill="#b8913f"/>
-      <path d="M20 62 L 20 74 M17 74 L 20 80 L 23 74Z" stroke="#c7a256" fill="#c7a256" stroke-width="1"/>
-    </symbol>
-    <symbol id="heartI" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 5.3 3 1.7-1.8 3.2-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" fill="currentColor"/></symbol>
+    <!-- three gold dots (used for dividers) -->
+    <symbol id="heartI" viewBox="0 0 30 10"><circle cx="5" cy="5" r="3.4" fill="currentColor"/><circle cx="15" cy="5" r="3.4" fill="currentColor"/><circle cx="25" cy="5" r="3.4" fill="currentColor"/></symbol>
     <symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z M12 12.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
   </defs>
 </svg>
@@ -224,70 +185,31 @@
   <svg id="icOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
   <svg id="icOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="m22 9-6 6M16 9l6 6"/></svg>
 </button>
-<audio id="bgm" src="music.m4a" loop preload="auto"></audio>
+<audio id="bgm" src="music.m4a?v=2" loop preload="auto"></audio>
 
 <!-- ============ HERO ============ -->
 <section id="hero" class="hero">
-  <div id="stars"></div>
-  <div class="moon"></div>
-
-  <!-- string lights + hanging lanterns -->
-  <svg class="scene top" viewBox="0 0 400 220" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
-    <path d="M-10 6 Q 200 70 410 6" fill="none" stroke="#6b5a3a" stroke-width="1"/>
-    <path d="M-10 26 Q 200 110 410 26" fill="none" stroke="#6b5a3a" stroke-width="1"/>
-    <g fill="#ffe7a6" class="glow">
-      <circle cx="40" cy="22" r="2.4"/><circle cx="80" cy="34" r="2.4"/><circle cx="120" cy="43" r="2.4"/><circle cx="160" cy="49" r="2.4"/><circle cx="200" cy="51" r="2.4"/><circle cx="240" cy="49" r="2.4"/><circle cx="280" cy="43" r="2.4"/><circle cx="320" cy="34" r="2.4"/><circle cx="360" cy="22" r="2.4"/>
-      <circle cx="60" cy="50" r="2.2"/><circle cx="110" cy="62" r="2.2"/><circle cx="160" cy="68" r="2.2"/><circle cx="200" cy="69" r="2.2"/><circle cx="240" cy="68" r="2.2"/><circle cx="290" cy="62" r="2.2"/><circle cx="340" cy="50" r="2.2"/>
-    </g>
-    <g style="filter:drop-shadow(0 0 8px rgba(255,200,90,.8))">
-      <path d="M11 0V20M41 0V44M73 0V26M327 0V26M359 0V44M389 0V20" stroke="#c7a256" stroke-width="1"/>
-      <use href="#lantern" x="-6" y="14" width="34" height="68"/>
-      <use href="#lantern" x="20" y="38" width="42" height="84"/>
-      <use href="#lantern" x="58" y="20" width="30" height="60"/>
-      <use href="#lantern" x="312" y="20" width="30" height="60"/>
-      <use href="#lantern" x="338" y="38" width="42" height="84"/>
-      <use href="#lantern" x="372" y="14" width="34" height="68"/>
-    </g>
-  </svg>
-
-  <!-- hills, pines, path, ground lanterns -->
-  <svg class="scene bottom" viewBox="0 0 400 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3150"/><stop offset="1" stop-color="#151a2a"/></linearGradient>
-      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151b22"/><stop offset="1" stop-color="#0a0d12"/></linearGradient>
-      <radialGradient id="halo"><stop offset="0" stop-color="#ffcf6b" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf6b" stop-opacity="0"/></radialGradient>
-      <symbol id="pine" viewBox="0 0 40 100"><path d="M20 0 L 30 30 L 25 30 L 36 58 L 28 58 L 40 92 L 22 92 L 22 100 L 18 100 L 18 92 L 0 92 L 12 58 L 4 58 L 15 30 L 10 30Z" fill="#0f1420"/></symbol>
-    </defs>
-    <path d="M0 150 Q 60 110 120 140 T 240 130 T 400 140 V 380 H 0Z" fill="url(#hill)" opacity=".8"/>
-    <use href="#pine" x="20" y="90" width="44" height="120"/><use href="#pine" x="56" y="70" width="52" height="150"/>
-    <use href="#pine" x="100" y="120" width="34" height="96"/><use href="#pine" x="270" y="118" width="34" height="96"/>
-    <use href="#pine" x="296" y="72" width="52" height="150"/><use href="#pine" x="340" y="92" width="44" height="120"/>
-    <path d="M0 210 Q 200 185 400 210 V 380 H 0Z" fill="url(#ground)"/>
-    <path d="M175 210 Q 200 205 225 210 L 290 380 H 110Z" fill="#232831" opacity=".9"/>
-    <g fill="#1b2a22"><ellipse cx="40" cy="260" rx="70" ry="30"/><ellipse cx="360" cy="260" rx="70" ry="30"/><ellipse cx="20" cy="340" rx="80" ry="40"/><ellipse cx="380" cy="340" rx="80" ry="40"/></g>
-    <g fill="#c9a7c4" opacity=".7"><circle cx="70" cy="250" r="2"/><circle cx="90" cy="262" r="2"/><circle cx="330" cy="252" r="2"/><circle cx="310" cy="266" r="2"/><circle cx="54" cy="300" r="2"/><circle cx="346" cy="300" r="2"/></g>
-    <g class="glow">
-      <circle cx="22" cy="300" r="40" fill="url(#halo)"/><circle cx="378" cy="300" r="40" fill="url(#halo)"/>
-      <circle cx="130" cy="232" r="22" fill="url(#halo)"/><circle cx="270" cy="232" r="22" fill="url(#halo)"/>
-    </g>
-    <use href="#lantern" x="4" y="262" width="36" height="72"/><use href="#lantern" x="360" y="262" width="36" height="72"/>
-    <use href="#lantern" x="122" y="214" width="16" height="32"/><use href="#lantern" x="262" y="214" width="16" height="32"/>
-  </svg>
+  <div class="hero-photo" aria-hidden="true"></div>
+  <img class="lotus tl" src="art/lotus-tl.png" alt="">
+  <img class="lotus br" src="art/lotus-br.png" alt="">
 
   <div class="hero-inner">
-    <svg class="hero-heart"><use href="#heartI"/></svg>
+    <img class="ganesha" src="art/ganesha.png" alt="">
+    <div class="div-line"><svg><use href="#heartI"/></svg></div>
     <p class="hero-text">With hearts full of love and gratitude, we are delighted to begin a beautiful new chapter of our lives together. As we unite in love, faith, and commitment, we seek your prayers and blessings to accompany us on this wonderful journey of togetherness.</p>
-    <p class="verse">“I have found the one whom my soul loves.”<br>— Song of Solomon 3:4</p>
     <div class="div-line"><svg><use href="#heartI"/></svg></div>
 
     <div class="name">Anusha C.P</div>
+    <div class="name-ml">അനുഷ സി.പി</div>
     <p class="parent">Daughter of<br>Mr. Haridasan P.M &amp; Mrs. Sumathi V.K</p>
     <div class="amp">&amp;</div>
     <div class="name">Abhijith S</div>
+    <div class="name-ml">അഭിജിത്ത് എസ്</div>
     <p class="parent">Son of<br>Mr. Saji N.C &amp; Mrs. Bindu M.K</p>
   </div>
   <div class="scroll">SCROLL<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m5 8 7 7 7-7"/></svg></div>
 </section>
+<div class="kasavu"></div>
 
 <!-- ============ STORY ============ -->
 <section id="story" class="s sec">
@@ -372,7 +294,7 @@
     <div class="div-line"><svg><use href="#heartI"/></svg></div>
     <p class="vname">Anu Nivas (Bride's Home)</p>
     <p class="vaddr">West of Perumanpura Vishnu Temple, Cheppalthazham P.O, Perumanna, Poovattuparamba, Kozhikode, Kerala</p>
-    <p class="vwhen">Thursday, April 22, 2027 · 4:00 PM – 10:00 PM</p>
+    <p class="vwhen">Thursday, April 22, 2027 · 3:00 PM – 10:00 PM</p>
     <div class="map"><iframe class="mapFrame" loading="lazy" title="Reception venue map" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     <a class="btn mapBtn" target="_blank" rel="noopener">View on Google Maps</a>
   </div>
@@ -401,7 +323,9 @@
 
 <!-- ============ CLOSING ============ -->
 <section class="s bg-a sec closing">
-  <div class="w rv">
+  <img class="lotus bl" src="art/lotus-bl.png" alt="">
+  <img class="lotus br" src="art/lotus-br.png" alt="" style="width:min(30vw,150px)">
+  <div class="w rv" style="position:relative;z-index:2">
     <svg class="wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 15 Q 37 5 75 15 T 150 15 T 225 15 T 300 15" fill="none" stroke="currentColor" stroke-width="1"/><g fill="currentColor"><circle cx="40" cy="25" r="1.5"/><circle cx="110" cy="4" r="1.5"/><circle cx="180" cy="25" r="1.5"/><circle cx="250" cy="4" r="1.5"/></g></svg>
     <h2 class="t">We can't wait to celebrate with you!</h2>
     <svg class="wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 15 Q 37 5 75 15 T 150 15 T 225 15 T 300 15" fill="none" stroke="currentColor" stroke-width="1"/><g fill="currentColor"><circle cx="40" cy="25" r="1.5"/><circle cx="110" cy="4" r="1.5"/><circle cx="180" cy="25" r="1.5"/><circle cx="250" cy="4" r="1.5"/></g></svg>
@@ -418,17 +342,6 @@
   const WEDDING = new Date('2027-04-23T12:00:00+05:30');
   const PHONE = '919946873051';
   const PLACE = 'Perumanpura Vishnu Temple, Perumanna, Kozhikode, Kerala';
-
-  /* ---- stars ---- */
-  const stars = document.getElementById('stars');
-  for (let i = 0; i < 110; i++) {
-    const s = document.createElement('i'); s.className = 'star';
-    const z = Math.random() * 1.8 + .6;
-    Object.assign(s.style, { width: z+'px', height: z+'px', left: Math.random()*100+'%', top: Math.random()*58+'%' });
-    s.style.setProperty('--t', (2 + Math.random()*4) + 's');
-    s.style.animationDelay = (-Math.random()*5) + 's';
-    stars.appendChild(s);
-  }
 
   /* ---- opener + music ---- */
   const opener = document.getElementById('opener'), bgm = document.getElementById('bgm');
@@ -455,11 +368,11 @@
   const cv = document.getElementById('scratch'), ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
   const g = ctx.createRadialGradient(W*.42, H*.32, 10, W*.5, H*.5, W*.62);
-  g.addColorStop(0, '#f6e7b3'); g.addColorStop(.35, '#d4b067'); g.addColorStop(.75, '#a9843e'); g.addColorStop(1, '#7d5e25');
+  g.addColorStop(0, '#fde4ec'); g.addColorStop(.35, '#f3aac1'); g.addColorStop(.75, '#d4708f'); g.addColorStop(1, '#a8466a');
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   for (let i = 0; i < 2600; i++) {
     const r = Math.random();
-    ctx.fillStyle = r < .55 ? `rgba(255,248,220,${Math.random()*.9})` : r < .8 ? `rgba(110,80,30,${Math.random()*.6})` : `rgba(255,255,255,${.6+Math.random()*.4})`;
+    ctx.fillStyle = r < .55 ? `rgba(255,248,220,${Math.random()*.9})` : r < .8 ? `rgba(130,30,70,${Math.random()*.45})` : `rgba(255,255,255,${.6+Math.random()*.4})`;
     const sz = Math.random() < .93 ? Math.random()*2.2 + .6 : Math.random()*4 + 2;
     ctx.beginPath(); ctx.arc(Math.random()*W, Math.random()*H, sz/2, 0, 7); ctx.fill();
   }
