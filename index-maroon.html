@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anusha & Abhijith · Wedding Invitation</title>
+<meta name="description" content="Anusha C.P & Abhijith S — Wedding on Friday, 23 April 2027 at the bride's home, Perumanna, Kozhikode.">
+<meta property="og:title" content="Anusha & Abhijith · മാംഗല്യം">
+<meta property="og:description" content="Friday, 23 April 2027 · Muhurtham 12:00 – 12:30 PM · Bride's home, Perumanna">
+<meta property="og:image" content="couple.jpg">
+<meta name="theme-color" content="#5c0b2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Noto+Serif+Malayalam:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#7a1240; --deep:#4a0a26; --wine:#5c0b2e;
+    --gold:#c9a24a; --gold-2:#e8cf8a; --gold-dark:#8d6a1f;
+    --blush:#fbe8ee; --pink:#f3b6c8; --cream:#fffaf5; --ink:#3a1a26;
+    --ml:'Noto Serif Malayalam',serif; --serif:'Cormorant Garamond',serif; --script:'Great Vibes',cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--serif);color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body.locked{overflow:hidden;height:100vh}
+  .ml{font-family:var(--ml)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- Opening doors ---------- */
+  #opener{position:fixed;inset:0;z-index:100;display:flex;cursor:pointer;perspective:1600px}
+  .door{flex:1;position:relative;background:
+      radial-gradient(circle at 50% 50%,rgba(201,162,74,.12),transparent 60%),
+      linear-gradient(135deg,#5c0b2e,#3a0619);
+    transition:transform 1.6s cubic-bezier(.7,0,.3,1);overflow:hidden}
+  .door::before{content:"";position:absolute;inset:18px;border:1px solid rgba(232,207,138,.55);border-radius:4px}
+  .door::after{content:"";position:absolute;inset:26px;border:1px solid rgba(232,207,138,.25)}
+  .door.left{transform-origin:left center;border-right:2px solid var(--gold)}
+  .door.right{transform-origin:right center;border-left:2px solid var(--gold)}
+  #opener.open .door.left{transform:rotateY(-105deg)}
+  #opener.open .door.right{transform:rotateY(105deg)}
+  #opener.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.6)}
+  #opener.gone{display:none}
+  .door .lotus-corner{position:absolute;width:150px;opacity:.55}
+  .door.left .lotus-corner{bottom:40px;left:40px}
+  .door.right .lotus-corner{top:40px;right:40px;transform:rotate(180deg)}
+  .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;transition:all .8s ease;pointer-events:none}
+  .seal-ring{width:150px;height:150px;border-radius:50%;margin:0 auto;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,#f4dc9a,#c9a24a 45%,#8d6a1f);box-shadow:0 10px 40px rgba(0,0,0,.45),inset 0 0 0 6px rgba(255,255,255,.15);
+    animation:pulse 2.4s ease-in-out infinite}
+  .seal-ring span{font-family:var(--script);font-size:46px;color:var(--wine);text-shadow:0 1px 0 rgba(255,255,255,.4)}
+  .seal p{margin-top:22px;color:var(--gold-2);letter-spacing:.35em;text-transform:uppercase;font-size:14px}
+  .seal small{display:block;margin-top:6px;color:rgba(232,207,138,.7);font-family:var(--ml);letter-spacing:0;font-size:13px}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+  /* ---------- Music button ---------- */
+  #musicBtn{position:fixed;top:16px;right:16px;z-index:90;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);
+    background:rgba(92,11,46,.85);color:var(--gold-2);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  #musicBtn svg{width:20px;height:20px}
+  #musicBtn.playing{animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- Petals ---------- */
+  #petals{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+  .petal{position:absolute;top:-30px;width:14px;height:18px;background:linear-gradient(135deg,#f9c9d7,#e97fa0);
+    border-radius:80% 0 80% 0;opacity:.5;animation:fall linear forwards}
+  @keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--rot))}}
+
+  /* ---------- Generic sections ---------- */
+  section{position:relative;padding:88px 22px;text-align:center;overflow:hidden}
+  .wrap{max-width:720px;margin:0 auto;position:relative;z-index:2}
+  .cream{background:var(--cream)}
+  .blush{background:linear-gradient(180deg,#fdf0f4,#fbe3ea)}
+  .eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:13px;color:var(--gold-dark);font-weight:600}
+  h2.title{font-family:var(--script);font-weight:400;font-size:clamp(44px,9vw,64px);color:var(--maroon);line-height:1.1;margin:8px 0 4px}
+  .ml-sub{font-family:var(--ml);color:var(--maroon);font-size:15px;opacity:.85}
+  .divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:22px auto;color:var(--gold)}
+  .divider::before,.divider::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Hero ---------- */
+  #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:70px 22px 90px;
+    background:radial-gradient(ellipse at top,#fff 0%,#fbe3ea 55%,#f6cdd9 100%)}
+  .hero-lotus{position:absolute;width:min(46vw,300px);opacity:.9;z-index:1}
+  .hero-lotus.tl{top:-40px;left:-60px;transform:rotate(150deg)}
+  .hero-lotus.br{bottom:-40px;right:-60px;transform:rotate(-30deg)}
+  .ganesha{width:64px;margin:0 auto 6px;color:var(--gold)}
+  .mangalyam{font-family:var(--ml);font-weight:800;font-size:clamp(40px,10vw,64px);color:var(--maroon);line-height:1.3}
+  .arch{width:min(78vw,330px);aspect-ratio:4/5;margin:26px auto 30px;border-radius:200px 200px 18px 18px;overflow:hidden;
+    border:3px solid var(--gold);box-shadow:0 0 0 8px rgba(255,255,255,.7),0 0 0 9px var(--gold-2),0 24px 60px rgba(92,11,46,.3)}
+  .arch img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+  .names{font-family:var(--script);font-size:clamp(54px,13vw,92px);color:var(--maroon);line-height:1}
+  .names .amp{display:block;font-size:.5em;color:var(--gold);margin:4px 0}
+  .names-ml{font-family:var(--ml);color:var(--wine);font-weight:600;margin-top:12px;font-size:17px}
+  .hero-date{margin-top:22px;display:inline-flex;gap:14px;align-items:center;font-size:18px;letter-spacing:.2em;color:var(--deep);font-weight:600;text-transform:uppercase}
+  .hero-date b{font-size:34px;color:var(--maroon);letter-spacing:0}
+  .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;color:var(--maroon);z-index:2;opacity:.7}
+  .scroll-hint::after{content:"";display:block;width:1px;height:34px;margin:8px auto 0;background:var(--maroon);animation:drip 1.8s infinite}
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ---------- Invitation message ---------- */
+  .invite-text{font-family:var(--ml);font-size:clamp(15px,3.8vw,18px);line-height:2.05;color:var(--ink)}
+  .invite-text strong{color:var(--maroon)}
+  .en-text{font-style:italic;font-size:clamp(18px,4.4vw,22px);line-height:1.7;color:#6b3a4c;margin-top:22px}
+
+  /* ---------- Families ---------- */
+  .families{display:grid;grid-template-columns:1fr;gap:22px;margin-top:34px}
+  @media(min-width:700px){.families{grid-template-columns:1fr 1fr}}
+  .fam{background:#fff;border:1px solid rgba(201,162,74,.45);border-radius:18px;padding:30px 22px;position:relative;box-shadow:0 12px 34px rgba(92,11,46,.08)}
+  .fam::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(201,162,74,.35);border-radius:13px;pointer-events:none}
+  .fam .role{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-dark);font-weight:700}
+  .fam h3{font-family:var(--script);font-weight:400;font-size:46px;color:var(--maroon);margin:6px 0 0}
+  .fam .ml-name{font-family:var(--ml);font-weight:800;color:var(--maroon);font-size:20px}
+  .fam p{font-family:var(--ml);font-size:14px;line-height:1.9;margin-top:12px;color:#5a3442}
+  .fam p.en{font-family:var(--serif);font-size:17px;font-style:italic;margin-top:8px;line-height:1.5}
+
+  /* ---------- Scratch ---------- */
+  .scratch-box{position:relative;width:min(80vw,300px);aspect-ratio:1/0.92;margin:30px auto 0}
+  .heart-shape{position:absolute;inset:0;clip-path:path('M150 276 C 60 210 0 160 0 90 C 0 38 40 0 88 0 C 118 0 140 16 150 40 C 160 16 182 0 212 0 C 260 0 300 38 300 90 C 300 160 240 210 150 276 Z')}
+  .scratch-box{filter:drop-shadow(0 0 1.5px var(--gold)) drop-shadow(0 14px 28px rgba(122,18,64,.22))}
+  .heart-under{background:linear-gradient(160deg,#fff 20%,#f8cfdc);display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:30px;color:var(--maroon)}
+  .heart-under .d{font-size:56px;font-weight:700;line-height:1}
+  .heart-under .m{letter-spacing:.25em;font-weight:600;font-size:15px;text-transform:uppercase}
+  .heart-under .t{font-family:var(--ml);font-size:13px;margin-top:6px}
+  #scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .9s}
+  #scratch.done{opacity:0;pointer-events:none}
+  .scratch-hint{margin-top:14px;font-style:italic;color:#8a5a6a}
+  .date-details{opacity:0;transform:translateY(16px);transition:all .9s ease .2s;margin-top:22px}
+  .date-details.show{opacity:1;transform:none}
+  .date-details h4{font-family:var(--script);font-weight:400;font-size:40px;color:var(--maroon)}
+  .date-details p{font-size:20px;letter-spacing:.06em}
+  .btn{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:13px 26px;border-radius:999px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,var(--maroon),var(--deep));color:var(--gold-2);font-family:var(--serif);font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;font-size:14px;text-decoration:none;box-shadow:0 10px 26px rgba(92,11,46,.3);transition:transform .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px}
+  .btn.ghost{background:transparent;color:var(--maroon);border:1.5px solid var(--maroon);box-shadow:none}
+
+  /* ---------- Countdown ---------- */
+  #countdown{background:linear-gradient(135deg,#5c0b2e,#3a0619);color:var(--gold-2)}
+  #countdown h2.title{color:var(--gold-2)}
+  #countdown .ml-sub{color:var(--pink)}
+  .cd{display:flex;justify-content:center;gap:clamp(8px,3vw,22px);margin-top:30px}
+  .cd div{width:clamp(66px,19vw,104px);padding:16px 4px;border:1px solid rgba(232,207,138,.5);border-radius:14px;background:rgba(255,255,255,.04)}
+  .cd b{display:block;font-size:clamp(30px,8vw,46px);font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+  .cd span{font-size:11px;letter-spacing:.25em;text-transform:uppercase}
+  .ornament-bg{position:absolute;inset:0;opacity:.07;background-image:radial-gradient(var(--gold) 1.5px,transparent 1.5px);background-size:26px 26px}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;margin:40px auto 0;max-width:560px;text-align:left}
+  .timeline::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--maroon))}
+  .ev{position:relative;padding:0 0 34px 70px}
+  .ev:last-child{padding-bottom:0}
+  .ev .dot{position:absolute;left:0;top:0;width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--gold);display:grid;place-items:center;color:var(--maroon);box-shadow:0 6px 16px rgba(92,11,46,.15)}
+  .ev .dot svg{width:22px;height:22px}
+  .ev .day{font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dark);font-weight:700}
+  .ev h3{font-size:28px;color:var(--maroon);font-weight:700;line-height:1.2;margin-top:2px}
+  .ev h3 small{font-family:var(--ml);font-size:15px;font-weight:600;display:block;color:var(--wine)}
+  .ev p{font-size:18px;margin-top:6px;color:#5a3442}
+  .ev p.ml{font-size:14px;line-height:1.8}
+
+  /* ---------- Venue ---------- */
+  .venue-card{background:#fff;border-radius:22px;padding:36px 24px;margin-top:30px;border:1px solid rgba(201,162,74,.5);box-shadow:0 18px 44px rgba(92,11,46,.1)}
+  .venue-card .pin{width:58px;height:58px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--blush);color:var(--maroon)}
+  .venue-card .pin svg{width:28px;height:28px}
+  .venue-card h3{font-size:30px;color:var(--maroon)}
+  .venue-card .ml{font-size:15px;line-height:1.9;margin-top:10px;color:#5a3442}
+  .venue-card .en{font-size:18px;font-style:italic;margin-top:6px;color:#6b3a4c}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .map{margin-top:26px;border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,74,.5);height:260px}
+  .map iframe{width:100%;height:100%;border:0}
+
+  /* ---------- RSVP ---------- */
+  form{margin:30px auto 0;max-width:460px;text-align:left;display:grid;gap:16px}
+  label{font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-dark);font-weight:700}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:12px;border:1px solid rgba(122,18,64,.25);background:#fff;font-family:var(--serif);font-size:18px;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:transparent}
+  form .btn{justify-self:center}
+  .note{font-size:14px;color:#8a5a6a;text-align:center;font-style:italic}
+
+  /* ---------- Footer ---------- */
+  footer{background:linear-gradient(135deg,#5c0b2e,#3a0619);color:var(--gold-2);text-align:center;padding:70px 22px 40px;position:relative;overflow:hidden}
+  footer .names{color:var(--gold-2);font-size:clamp(48px,11vw,72px)}
+  footer .ml{color:var(--pink);font-size:14px;line-height:2;margin-top:18px}
+  footer .tiny{margin-top:30px;font-size:13px;opacity:.6;letter-spacing:.1em}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- reusable lotus SVG -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="lp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbd3df"/><stop offset="1" stop-color="#e46b93"/></linearGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4dc9a"/><stop offset="1" stop-color="#b8892f"/></linearGradient>
+    <symbol id="lotus" viewBox="0 0 200 140">
+      <path d="M100 10 C 82 40 82 85 100 120 C 118 85 118 40 100 10Z" fill="url(#lp)"/>
+      <path d="M100 120 C 70 100 50 60 56 28 C 80 44 98 80 100 120Z" fill="url(#lp)" opacity=".95"/>
+      <path d="M100 120 C 130 100 150 60 144 28 C 120 44 102 80 100 120Z" fill="url(#lp)" opacity=".95"/>
+      <path d="M100 122 C 60 118 24 96 12 66 C 44 66 82 88 100 122Z" fill="url(#lp)" opacity=".85"/>
+      <path d="M100 122 C 140 118 176 96 188 66 C 156 66 118 88 100 122Z" fill="url(#lp)" opacity=".85"/>
+      <path d="M100 30 V 115 M80 50 Q 92 85 100 118 M120 50 Q 108 85 100 118" stroke="#c94f7a" stroke-width="1" fill="none" opacity=".35"/>
+    </symbol>
+    <symbol id="lotus-gold" viewBox="0 0 200 140">
+      <path d="M100 10 C 82 40 82 85 100 120 C 118 85 118 40 100 10Z M100 120 C 70 100 50 60 56 28 C 80 44 98 80 100 120Z M100 120 C 130 100 150 60 144 28 C 120 44 102 80 100 120Z M100 122 C 60 118 24 96 12 66 C 44 66 82 88 100 122Z M100 122 C 140 118 176 96 188 66 C 156 66 118 88 100 122Z" fill="none" stroke="url(#lg)" stroke-width="2.4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Opening doors -->
+<div id="opener" role="button" tabindex="0" aria-label="Tap to open the invitation">
+  <div class="door left"><svg class="lotus-corner"><use href="#lotus-gold"/></svg></div>
+  <div class="door right"><svg class="lotus-corner"><use href="#lotus-gold"/></svg></div>
+  <div class="seal">
+    <div class="seal-ring"><span>A&amp;A</span></div>
+    <p>Tap to Open</p>
+    <small>ക്ഷണക്കത്ത് തുറക്കാൻ തൊടുക</small>
+  </div>
+</div>
+
+<button id="musicBtn" aria-label="Play or pause music" hidden>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+</button>
+<audio id="bgm" src="music.m4a" loop preload="auto"></audio>
+<div id="petals"></div>
+
+<!-- Hero -->
+<section id="hero">
+  <svg class="hero-lotus tl"><use href="#lotus"/></svg>
+  <svg class="hero-lotus br"><use href="#lotus"/></svg>
+  <div class="wrap">
+    <svg class="ganesha" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M32 4 l3 6 h-6z"/><path d="M24 14 q8 -6 16 0"/>
+      <path d="M20 22 q-10 -2 -12 10 q2 10 12 8"/><path d="M44 22 q10 -2 12 10 q-2 10 -12 8"/>
+      <path d="M22 18 q10 -6 20 0 q4 10 -4 18 q-2 6 2 10 q4 4 -2 8 q-6 2 -6 -6 q0 -6 -4 -10 q-10 -8 -6 -20z"/>
+      <circle cx="27" cy="26" r="1.2" fill="currentColor"/><circle cx="37" cy="26" r="1.2" fill="currentColor"/>
+      <path d="M16 56 q16 8 32 0"/>
+    </svg>
+    <div class="mangalyam">മാംഗല്യം</div>
+    <div class="eyebrow" style="margin-top:6px">We're getting married</div>
+    <div class="arch"><img src="couple.jpg" alt="Anusha and Abhijith"></div>
+    <div class="names">Anusha<span class="amp">&amp;</span>Abhijith</div>
+    <div class="names-ml">അനുഷ സി.പി &nbsp;❀&nbsp; അഭിജിത്ത് എസ്</div>
+    <div class="hero-date"><span>Friday</span><b>23</b><span>April 2027</span></div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- Invitation message -->
+<section class="cream">
+  <div class="wrap reveal">
+    <div class="eyebrow">With the blessings of the Almighty</div>
+    <div class="divider">❀</div>
+    <p class="invite-text">
+      ശ്രീ. ഹരിദാസൻ പി.എം &amp; ശ്രീമതി സുമതി വി.കെ<br>
+      അനു നിവാസ് (H), ചേപ്പാൽതാഴം, പെരുമണ്ണ പി.ഒ, കോഴിക്കോട്<br>
+      ഞങ്ങളുടെ മകൾ <strong>അനുഷ സി.പി</strong> വിവാഹിതയാവുകയാണ്.<br><br>
+      പ്രസ്തുത മംഗളകർമ്മം ധന്യമാക്കുവാൻ താങ്കളെ കുടുംബസമേതം ഞങ്ങളുടെ വസതിയിലേക്ക് സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു.
+    </p>
+    <p class="en-text">With hearts full of love and joy, we warmly invite you and your family to bless the wedding of our daughter Anusha with Abhijith. Your presence would mean the world to us.</p>
+    <div class="divider">❀</div>
+
+    <div class="families">
+      <div class="fam">
+        <div class="role">The Bride · വധു</div>
+        <h3>Anusha C.P</h3>
+        <div class="ml-name">അനുഷ സി.പി</div>
+        <p>D/O ശ്രീ. ഹരിദാസൻ പി.എം &amp; ശ്രീമതി സുമതി വി.കെ<br>അനു നിവാസ് (H), ചേപ്പാൽതാഴം<br>പെരുമണ്ണ പി.ഒ, കോഴിക്കോട്</p>
+      </div>
+      <div class="fam">
+        <div class="role">The Groom · വരൻ</div>
+        <h3>Abhijith S</h3>
+        <div class="ml-name">അഭിജിത്ത് എസ്</div>
+        <p>S/O ശ്രീ. സജി എൻ.സി &amp; ശ്രീമതി ബിന്ദു എം.കെ<br>ചൈത്രം, അടുക്കത്ത് (H)<br>കുന്നമംഗലം പി.ഒ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scratch to reveal -->
+<section class="blush">
+  <div class="wrap reveal">
+    <div class="eyebrow">Scratch to Reveal</div>
+    <h2 class="title">You're Invited!</h2>
+    <div class="ml-sub">തീയതി അറിയാൻ ഹൃദയം ചുരണ്ടുക</div>
+    <div class="scratch-box" id="scratchBox">
+      <div class="heart-shape heart-under">
+        <div class="m">April</div>
+        <div class="d">23</div>
+        <div class="m">2027</div>
+        <div class="t">വെള്ളി · Friday</div>
+      </div>
+      <canvas id="scratch" class="heart-shape"></canvas>
+    </div>
+    <p class="scratch-hint" id="scratchHint">Use your finger to scratch the golden heart ✨</p>
+    <div class="date-details" id="dateDetails">
+      <h4>Save the Date</h4>
+      <p>Friday, 23 April 2027</p>
+      <p class="ml" style="font-size:15px;margin-top:6px">മുഹൂർത്തം 12 നും 12.30 നും മധ്യേ</p>
+      <a class="btn" id="calBtn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Save the Date
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Countdown -->
+<section id="countdown">
+  <div class="ornament-bg"></div>
+  <div class="wrap reveal">
+    <div class="eyebrow" style="color:var(--gold)">Counting down to forever</div>
+    <h2 class="title">The Big Day</h2>
+    <div class="ml-sub">ശുഭമുഹൂർത്തത്തിലേക്ക്</div>
+    <div class="cd" id="cd">
+      <div><b id="cdD">00</b><span>Days</span></div>
+      <div><b id="cdH">00</b><span>Hours</span></div>
+      <div><b id="cdM">00</b><span>Mins</span></div>
+      <div><b id="cdS">00</b><span>Secs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Program -->
+<section class="cream">
+  <div class="wrap reveal">
+    <div class="eyebrow">Programme</div>
+    <h2 class="title">Celebrations</h2>
+    <div class="ml-sub">ചടങ്ങുകൾ</div>
+    <div class="timeline">
+      <div class="ev">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 22h8M12 15v7M5 3h14l-1 6a6 6 0 0 1-12 0z"/></svg></div>
+        <div class="day">Thursday · 22 April 2027</div>
+        <h3>Friends' Get-together<small>സുഹൃത്ത് സൽക്കാരം</small></h3>
+        <p>4:00 PM – 10:00 PM · At the bride's home</p>
+        <p class="ml">2027 ഏപ്രിൽ 22 വ്യാഴം, വധൂഗൃഹത്തിൽ<br>വൈകുന്നേരം 4 മണി മുതൽ 10 മണി വരെ</p>
+      </div>
+      <div class="ev">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 5.3 3 1.7-1.8 3.2-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+        <div class="day">Friday · 23 April 2027</div>
+        <h3>Thalikettu · Wedding<small>താലികെട്ട് · വധൂഗൃഹം</small></h3>
+        <p>Muhurtham 12:00 PM – 12:30 PM · At the bride's home</p>
+        <p class="ml">മുഹൂർത്തം 12 നും 12.30 നും മധ്യേ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Venue -->
+<section class="blush">
+  <svg class="hero-lotus br" style="opacity:.5"><use href="#lotus"/></svg>
+  <div class="wrap reveal">
+    <div class="eyebrow">Venue</div>
+    <h2 class="title">Bride's Home</h2>
+    <div class="ml-sub">വധൂഗൃഹം</div>
+    <div class="venue-card">
+      <div class="pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+      <h3>Anu Nivas</h3>
+      <p class="ml">പെരുമൺപുറ വിഷ്ണുക്ഷേത്രത്തിനു പടിഞ്ഞാറുവശം<br>ചേപ്പാൽതാഴം പി.ഒ, പെരുമണ്ണ, പൂവാട്ടുപറമ്പ്</p>
+      <p class="en">West of Perumanpura Vishnu Temple, Cheppalthazham, Perumanna, Poovattuparamba, Kozhikode</p>
+      <div class="btn-row">
+        <a class="btn" id="mapBtn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
+          View on Map
+        </a>
+        <a class="btn ghost" href="tel:+919946873051">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          +91 99468 73051
+        </a>
+      </div>
+      <div class="map"><iframe id="mapFrame" loading="lazy" title="Map to the bride's home" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="cream">
+  <div class="wrap reveal">
+    <div class="eyebrow">Kindly Respond</div>
+    <h2 class="title">RSVP</h2>
+    <div class="ml-sub">നിങ്ങളുടെ വരവ് അറിയിക്കുക</div>
+    <form id="rsvp">
+      <div><label for="rName">Your Name *</label><input id="rName" required placeholder="Your name"></div>
+      <div><label for="rAttend">Will you be attending? *</label>
+        <select id="rAttend" required>
+          <option value="">Select…</option>
+          <option>Yes, I'll be there! 🎉</option>
+          <option>Sorry, I can't make it 🙏</option>
+        </select></div>
+      <div><label for="rCount">Number of guests</label><input id="rCount" type="number" min="1" max="20" value="1"></div>
+      <div><label for="rMsg">Your wishes</label><textarea id="rMsg" rows="3" placeholder="Blessings for the couple…"></textarea></div>
+      <button class="btn" type="submit">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+        Send via WhatsApp
+      </button>
+      <p class="note">Opens WhatsApp with your reply ready — just tap send.</p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ornament-bg"></div>
+  <div class="wrap reveal">
+    <div class="eyebrow" style="color:var(--gold)">We can't wait to celebrate with you</div>
+    <div class="divider">❀</div>
+    <div class="names">Anusha <span style="color:var(--pink)">&amp;</span> Abhijith</div>
+    <p class="ml">എന്ന്: ഹരിദാസൻ പി.എം, സുമതി വി.കെ,<br>സരോജിനി, ബിനുഷ സി.പി, മറ്റു കുടുംബാംഗങ്ങൾ</p>
+    <p class="tiny">23 · 04 · 2027 &nbsp;·&nbsp; Perumanna, Kozhikode</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const WEDDING = new Date('2027-04-23T12:00:00+05:30');
+  const PHONE = '919946873051';
+  const PLACE = 'Perumanpura Vishnu Temple, Perumanna, Kozhikode, Kerala';
+
+  // ---- Opener + music ----
+  const opener = document.getElementById('opener');
+  const bgm = document.getElementById('bgm');
+  const musicBtn = document.getElementById('musicBtn');
+  bgm.volume = 0.6;
+  function openInvite(){
+    if (opener.classList.contains('open')) return;
+    opener.classList.add('open');
+    bgm.play().then(()=>musicBtn.classList.add('playing')).catch(()=>{});
+    musicBtn.hidden = false;
+    burstPetals(40);
+    setTimeout(()=>{ opener.classList.add('gone'); document.body.classList.remove('locked'); }, 1600);
+  }
+  opener.addEventListener('click', openInvite);
+  opener.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); openInvite(); } });
+  musicBtn.addEventListener('click', () => {
+    if (bgm.paused) { bgm.play(); musicBtn.classList.add('playing'); }
+    else { bgm.pause(); musicBtn.classList.remove('playing'); }
+  });
+
+  // ---- Petals ----
+  const petals = document.getElementById('petals');
+  function petal(){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.setProperty('--dx', (Math.random()*200-100) + 'px');
+    p.style.setProperty('--rot', (Math.random()*720-360) + 'deg');
+    const s = 0.6 + Math.random()*0.8;
+    p.style.transform = `scale(${s})`;
+    p.style.animationDuration = (7 + Math.random()*6) + 's';
+    petals.appendChild(p);
+    setTimeout(()=>p.remove(), 14000);
+  }
+  function burstPetals(n){ for (let i=0;i<n;i++) setTimeout(petal, i*90); }
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(petal, 2600);
+
+  // ---- Reveal on scroll ----
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---- Scratch card ----
+  const cvs = document.getElementById('scratch');
+  const ctx = cvs.getContext('2d');
+  const box = document.getElementById('scratchBox');
+  let scratched = false;
+  function paintCover(){
+    const r = box.getBoundingClientRect(), dpr = window.devicePixelRatio||1;
+    cvs.width = r.width*dpr; cvs.height = r.height*dpr;
+    // the heart clip-path is drawn for a 300px box; scale it to fit
+    const k = r.width/300;
+    box.querySelectorAll('.heart-shape').forEach(el => el.style.clipPath =
+      `path('M${150*k} ${276*k} C ${60*k} ${210*k} 0 ${160*k} 0 ${90*k} C 0 ${38*k} ${40*k} 0 ${88*k} 0 C ${118*k} 0 ${140*k} ${16*k} ${150*k} ${40*k} C ${160*k} ${16*k} ${182*k} 0 ${212*k} 0 C ${260*k} 0 ${300*k} ${38*k} ${300*k} ${90*k} C ${300*k} ${160*k} ${240*k} ${210*k} ${150*k} ${276*k} Z')`);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const g = ctx.createLinearGradient(0,0,r.width,r.height);
+    g.addColorStop(0,'#f4dc9a'); g.addColorStop(.45,'#c9a24a'); g.addColorStop(1,'#8d6a1f');
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle = g; ctx.fillRect(0,0,r.width,r.height);
+    for (let i=0;i<500;i++){ // glitter
+      ctx.fillStyle = `rgba(255,255,255,${Math.random()*.7})`;
+      ctx.fillRect(Math.random()*r.width, Math.random()*r.height, 1.6, 1.6);
+    }
+    ctx.fillStyle='rgba(92,11,46,.75)'; ctx.font = `600 ${16*k}px "Cormorant Garamond", serif`; ctx.textAlign='center';
+    ctx.fillText('SCRATCH HERE', r.width/2, r.height*0.42);
+  }
+  paintCover();
+  document.fonts && document.fonts.ready.then(()=>{ if(!scratched) paintCover(); });
+  let drawing=false, last=null, strokes=0;
+  function pos(e){ const r=cvs.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top}; }
+  function scratchAt(p){
+    ctx.globalCompositeOperation='destination-out';
+    ctx.lineWidth = 38; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo((last||p).x,(last||p).y); ctx.lineTo(p.x,p.y); ctx.stroke();
+    last = p;
+    if (++strokes % 12 === 0) checkDone();
+  }
+  function checkDone(){
+    const d = ctx.getImageData(0,0,cvs.width,cvs.height).data;
+    let clear=0, total=0;
+    for (let i=3;i<d.length;i+=64){ total++; if (d[i]===0) clear++; }
+    if (clear/total > 0.45) finishScratch();
+  }
+  function finishScratch(){
+    if (scratched) return; scratched = true;
+    cvs.classList.add('done');
+    document.getElementById('scratchHint').style.display='none';
+    document.getElementById('dateDetails').classList.add('show');
+    burstPetals(30);
+  }
+  cvs.addEventListener('pointerdown', e => { drawing=true; last=null; cvs.setPointerCapture(e.pointerId); scratchAt(pos(e)); });
+  cvs.addEventListener('pointermove', e => { if (drawing) scratchAt(pos(e)); });
+  ['pointerup','pointercancel'].forEach(t => cvs.addEventListener(t, () => { drawing=false; last=null; checkDone(); }));
+  window.addEventListener('resize', () => { if(!scratched) paintCover(); });
+
+  // ---- Calendar + map links ----
+  const cal = new URL('https://calendar.google.com/calendar/render');
+  cal.searchParams.set('action','TEMPLATE');
+  cal.searchParams.set('text','Anusha & Abhijith — Wedding');
+  cal.searchParams.set('dates','20270423T063000Z/20270423T070000Z');
+  cal.searchParams.set('details','Thalikettu · Muhurtham 12:00–12:30 PM at the bride\'s home (Anu Nivas).');
+  cal.searchParams.set('location', PLACE);
+  document.getElementById('calBtn').href = cal.toString();
+  document.getElementById('mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(PLACE);
+  document.getElementById('mapFrame').src = 'https://maps.google.com/maps?q=' + encodeURIComponent(PLACE) + '&z=15&output=embed';
+
+  // ---- Countdown ----
+  const pad = n => String(n).padStart(2,'0');
+  function tick(){
+    let s = Math.max(0, Math.floor((WEDDING - Date.now())/1000));
+    cdD.textContent = pad(Math.floor(s/86400)); s%=86400;
+    cdH.textContent = pad(Math.floor(s/3600)); s%=3600;
+    cdM.textContent = pad(Math.floor(s/60));
+    cdS.textContent = pad(s%60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ---- RSVP via WhatsApp ----
+  document.getElementById('rsvp').addEventListener('submit', e => {
+    e.preventDefault();
+    const msg = `RSVP — Anusha & Abhijith's wedding (23 April 2027)\n` +
+      `Name: ${rName.value.trim()}\nAttending: ${rAttend.value}\nGuests: ${rCount.value}\n` +
+      (rMsg.value.trim() ? `Wishes: ${rMsg.value.trim()}` : '');
+    window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+})();
+</script>
+</body>
+</html>
