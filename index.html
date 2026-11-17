@@ -152,6 +152,15 @@
   /* ================= CLOSING ================= */
   .wave{width:100%;height:30px;color:#c39a4a}
   .closing h2.t{font-size:clamp(38px,10vw,52px);margin:40px 0}
+  .story-btn{margin-top:8px;padding:12px 26px;font-size:15px;text-decoration:none}
+  #storyView{position:fixed;inset:0;z-index:150;background:#fdf1f4;display:none;flex-direction:column}
+  #storyView.on{display:flex}
+  .sv-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#a3285a,#741540);color:#fff3f7;border-bottom:1px solid #e6c37c}
+  .sv-bar span{font-family:var(--play);font-style:italic;font-size:17px}
+  .sv-close{border:1px solid #e6c37c;background:rgba(255,255,255,.12);color:#fff3f7;border-radius:8px;padding:6px 14px;font-family:var(--lora);font-size:14px;cursor:pointer}
+  #storyView iframe{flex:1;width:100%;border:0;background:#fff}
+  body.sv-open{overflow:hidden}
+  body.sv-open #musicBtn{display:none}
   footer{background:#fbe3ea;border-top:4px double #c39a4a;text-align:center;padding:40px 20px 50px}
   footer .fn{font-family:var(--script);font-size:20px;color:var(--maroon);font-weight:600}
   footer small{display:block;margin-top:10px;font-family:var(--lora);font-size:12px;color:var(--muted)}
@@ -326,8 +335,13 @@
     <svg class="wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 15 Q 37 5 75 15 T 150 15 T 225 15 T 300 15" fill="none" stroke="currentColor" stroke-width="1"/><g fill="currentColor"><circle cx="40" cy="25" r="1.5"/><circle cx="110" cy="4" r="1.5"/><circle cx="180" cy="25" r="1.5"/><circle cx="250" cy="4" r="1.5"/></g></svg>
     <h2 class="t">We can't wait to celebrate with you!</h2>
     <svg class="wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 15 Q 37 5 75 15 T 150 15 T 225 15 T 300 15" fill="none" stroke="currentColor" stroke-width="1"/><g fill="currentColor"><circle cx="40" cy="25" r="1.5"/><circle cx="110" cy="4" r="1.5"/><circle cx="180" cy="25" r="1.5"/><circle cx="250" cy="4" r="1.5"/></g></svg>
+    <a class="btn story-btn" id="storyBtn" href="https://anusha-engagement-website-nest.vercel.app/" target="_blank" rel="noopener">View Our Story &#9829;</a>
   </div>
 </section>
+
+<div id="storyView" role="dialog" aria-modal="true" aria-label="Our Story">
+  <div class="sv-bar"><span>Our Story</span><button class="sv-close" id="svClose" type="button">&#10005; Close</button></div>
+</div>
 
 <footer>
   <div class="fn">Anusha C.P &amp; Abhijith S</div>
@@ -338,6 +352,20 @@
 (() => {
   const WEDDING = new Date('2027-04-23T12:00:00+05:30');
   const PHONE = '919539495287';
+  /* ---- View Our Story (opens engagement site inside the page) ---- */
+  const storyBtn = document.getElementById('storyBtn'), storyView = document.getElementById('storyView');
+  storyBtn.addEventListener('click', e => {
+    e.preventDefault();
+    if (!storyView.querySelector('iframe')) {
+      const f = document.createElement('iframe');
+      f.src = storyBtn.href; f.title = 'Our Story'; f.loading = 'eager';
+      storyView.appendChild(f);
+    }
+    storyView.classList.add('on'); document.body.classList.add('sv-open');
+  });
+  const closeStory = () => { storyView.classList.remove('on'); document.body.classList.remove('sv-open'); };
+  document.getElementById('svClose').addEventListener('click', closeStory);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStory(); });
   const PLACE = 'Perumanpura Vishnu Temple, Perumanna, Kozhikode, Kerala';
 
   /* ---- opener + music ---- */
